@@ -43,7 +43,7 @@ aimbot.GetClosestPart = function()
     if aimbot.Players == true then
         for i,v in pairs(Players:GetPlayers()) do
             if not table.find(aimbot.FriendlyPlayers, v.Name) and v.Name ~= plr.Name then
-                if aimbot.AliveCheck == true and v.Character:FindFirstChildWhichIsA'Humanoid' and v.Character:FindFirstChildWhichIsA'Humanoid'.Health < 1 then
+                if aimbot.AliveCheck == true and v.Character and v.Character:FindFirstChildWhichIsA'Humanoid' and v.Character:FindFirstChildWhichIsA'Humanoid'.Health < 1 then
                     continue
                 end
                 if aimbot.TeamCheck == true and v.TeamColor == plr.TeamColor then
