@@ -5,7 +5,6 @@ local aimbot = {
     Players = true,
     PlayerPart = 'Head',
     FriendlyPlayers = {},
-    Key = Enum.UserInputType.MouseButton2,
     TeamCheck = true,
     AliveCheck = true,
     Smoothing = 0,
@@ -41,13 +40,13 @@ aimbot.GetClosestPart = function()
         end
     end
     
-    if aimbot.Players then
+    if aimbot.Players == true then
         for i,v in pairs(Players:GetPlayers()) do
             if not table.find(aimbot.FriendlyPlayers, v.Name) and v.Name ~= plr.Name then
-                if aimbot.AliveCheck and v.Character:FindFirstChildWhichIsA'Humanoid'.Health < 1 then
+                if aimbot.AliveCheck == true and v.Character:FindFirstChildWhichIsA'Humanoid'.Health < 1 then
                     continue
                 end
-                if aimbot.TeamCheck and v.TeamColor == plr.TeamColor then
+                if aimbot.TeamCheck == true and v.TeamColor == plr.TeamColor then
                     continue
                 end
                 if v.Character and v.Character:FindFirstChild(aimbot.PlayerPart) then
@@ -87,7 +86,7 @@ UserInputService.InputBegan:Connect(function(input)
     if UserInputService:GetFocusedTextBox() then
         return
     end
-    if input.UserInputType == aimbot.Key or input.KeyCode == aimbot.Key then
+    if input.KeyCode == aimbot.Key or input.UserInputType == aimbot.Key then
         keypressed = true
     end 
 end)
@@ -96,7 +95,7 @@ UserInputService.InputEnded:Connect(function(input)
     if UserInputService:GetFocusedTextBox() then
         return
     end
-    if input.UserInputType == aimbot.Key or input.KeyCode == aimbot.Key then
+    if input.KeyCode == aimbot.Key or input.UserInputType == aimbot.Key then
         keypressed = false
     end 
 end)
