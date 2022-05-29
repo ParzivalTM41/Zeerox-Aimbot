@@ -7,6 +7,7 @@ aimbot.Offset = {0, 0} -- offset for aimbot
 
 aimbot.TeamCheck = true -- is team checking enabled
 aimbot.AliveCheck = true -- is player alive
+aimbot.VisibilityCheck = true -- is player visible
 
 aimbot.Players = true -- is aimbot for default player characters enabled
 aimbot.PlayerPart = 'Head' -- part of default player character to aim
