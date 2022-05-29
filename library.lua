@@ -1,16 +1,16 @@
 -- Settings
 
 local aimbot = {
-    Enabled = true,
-    Players = true,
+    Enabled = false,
+    Players = false,
     PlayerPart = 'Head',
     FriendlyPlayers = {},
-    TeamCheck = true,
-    AliveCheck = true,
+    TeamCheck = false,
+    AliveCheck = false,
     Smoothing = 0,
     Offset = {0, 0},
     FOV = 200,
-    ShowFOV = true,
+    ShowFOV = false,
     CustomParts = {},
     FOVCircleColor = Color3.fromRGB(255, 255, 255)
 }
