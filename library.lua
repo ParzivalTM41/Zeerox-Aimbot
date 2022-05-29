@@ -8,6 +8,7 @@ local aimbot = {
     FriendlyPlayers = {},
     TeamCheck = false,
     AliveCheck = false,
+    VisibilityCheck = false,
     Smoothing = 0,
     SmoothingMethod = 0,
     Offset = {0, 0},
@@ -45,13 +46,24 @@ aimbot.GetClosestPart = function()
     if aimbot.Players == true then
         for i,v in pairs(Players:GetPlayers()) do
             if not table.find(aimbot.FriendlyPlayers, v.Name) and v.Name ~= plr.Name then
-                if aimbot.AliveCheck == true and v.Character and v.Character:FindFirstChildWhichIsA'Humanoid' and v.Character:FindFirstChildWhichIsA'Humanoid'.Health < 1 then
+                if aimbot.AliveCheck and v.Character and v.Character:FindFirstChildWhichIsA'Humanoid' and v.Character:FindFirstChildWhichIsA'Humanoid'.Health < 1 then
                     continue
                 end
-                if aimbot.TeamCheck == true and v.TeamColor == plr.TeamColor then
+                if aimbot.TeamCheck and v.TeamColor == plr.TeamColor then
                     continue
                 end
                 if v.Character and v.Character:FindFirstChild(aimbot.PlayerPart) then
+                    local part = v.Character[aimbot.PlayerPart]
+                    if aimbot.VisibilityCheck then
+                        local params = RaycastParams.new()
+                        params.FilterType = Enum.RaycastFilterType.Blacklist
+                        params.IgnoreWater = true
+                        params.FilterDescendantsInstances = {part.Parent, plr.Character}
+                        local raycast = workspace:Raycast(workspace.CurrentCamera.CFrame.p, (part.CFrame.p - workspace.Camera.CFrame.p), params)
+                        if raycast then
+                            return
+                        end
+                    end
                     table.insert(parts, v.Character[aimbot.PlayerPart])
                 end
             end
