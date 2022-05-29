@@ -9,6 +9,7 @@ local aimbot = {
     TeamCheck = false,
     AliveCheck = false,
     Smoothing = 0,
+    SmoothingMethod = 0,
     Offset = {0, 0},
     FOV = 200,
     ShowFOV = false,
@@ -78,7 +79,11 @@ aimbot.Aim = function(x, y, smooth)
     if not smooth then
         smooth = aimbot.Smoothing
     end
-    mousemoverel((x + aimbot.Offset[1] - mouse.X) / (5 * (smooth + 1)), (y + aimbot.Offset[2] - mouse.Y) / (5 * (smooth + 1)))
+    if aimbot.SmoothingMethod == 0 then
+        mousemoverel((x + aimbot.Offset[1] - mouse.X) / (5 * (smooth + 1)), (y + aimbot.Offset[2] - mouse.Y) / (5 * (smooth + 1)))
+    else
+        mousemoverel((x + aimbot.Offset[1] - mouse.X) / (smooth + 1), (y + aimbot.Offset[2] - mouse.Y) / (smooth + 1))
+    end
 end
 
 -- Key Pressing
