@@ -61,7 +61,7 @@ aimbot.GetClosestPart = function()
                         params.FilterDescendantsInstances = {part.Parent, plr.Character}
                         local raycast = workspace:Raycast(workspace.CurrentCamera.CFrame.p, (part.CFrame.p - workspace.Camera.CFrame.p), params)
                         if raycast then
-                            return
+                            continue
                         end
                     end
                     table.insert(parts, v.Character[aimbot.PlayerPart])
