@@ -130,7 +130,7 @@ RunService.RenderStepped:Connect(function() -- FOV Updating
 end)
 
 RunService.RenderStepped:Connect(function() -- Aiming
-    if aimbot.Enabled and keypressed then
+    if aimbot.Enabled then
         local part = aimbot.GetClosestPart()
         if part then
             aimbot.Aim(part.Position.X, part.Position.Y, aimbot.Smoothing)
