@@ -126,7 +126,7 @@ RunService.RenderStepped:Connect(function() -- FOV Updating
     fovcircle.Visible = aimbot.ShowFOV
     fovcircle.Color = aimbot.FOVCircleColor
     fovcircle.Radius = aimbot.FOV
-    fovcircle.Position = Vector2.new(mouse.X + aimbot.Offset[1], mouse.Y + 35 + aimbot.Offset[2])
+    fovcircle.Position = Vector2.new(mouse.X + aimbot.Offset[1], mouse.Y + aimbot.Offset[2])
 end)
 
 RunService.RenderStepped:Connect(function() -- Aiming
