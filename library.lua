@@ -21,6 +21,7 @@ local aimbot = {
 -- Variables
 
 local UserInputService = game:service'UserInputService'
+local inset = game:service("GuiService"):GetGuiInset().Y
 local Players = game:service'Players'
 local RunService = game:service'RunService'
 local plr = game:service'Players'.LocalPlayer
@@ -126,7 +127,7 @@ RunService.RenderStepped:Connect(function() -- FOV Updating
     fovcircle.Visible = aimbot.ShowFOV
     fovcircle.Color = aimbot.FOVCircleColor
     fovcircle.Radius = aimbot.FOV
-    fovcircle.Position = Vector2.new(mouse.X + aimbot.Offset[1], mouse.Y + aimbot.Offset[2])
+    fovcircle.Position = Vector2.new(mouse.X, mouse.Y + inset)
 end)
 
 RunService.RenderStepped:Connect(function() -- Aiming
